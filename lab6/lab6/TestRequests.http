@@ -1,0 +1,53 @@
+####
+POST http://127.0.0.1:3000/posts
+Content-Type: application/json
+
+{
+  "value" : "I am hungry"
+}
+
+####
+
+POST http://127.0.0.1:3000/posts
+Content-Type: application/json
+
+{
+  "value" : "what what"
+}
+
+####
+
+POST http://127.0.0.1:3000/posts
+Content-Type: application/json
+
+{
+  "value" : "hello hello !"
+}
+
+#### returns array of objects, each object a post with value, timestamp, and id
+GET  http://127.0.0.1:3000/posts
+
+#### gets value I am hungry back
+GET  http://127.0.0.1:3000/posts/1/id
+
+### returns all values with timestamp > 0
+GET  http://127.0.0.1:3000/posts/0/timestamp
+
+### returns empty array b/c no timestamp greater than 33366993336699
+GET  http://127.0.0.1:3000/posts/33366993336699/timestamp
+
+### rm I am hungry
+DELETE http://127.0.0.1:3000/posts/1/delete
+
+### not found b/c id 1 already deleted
+DELETE http://127.0.0.1:3000/posts/1/delete
+
+### rm what what
+DELETE http://127.0.0.1:3000/posts/2/delete
+
+### rm hello hello !
+DELETE http://127.0.0.1:3000/posts/3/delete
+
+### empty array bc all posts deleted
+GET  http://127.0.0.1:3000/posts
+
